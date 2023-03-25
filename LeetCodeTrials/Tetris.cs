@@ -12,7 +12,9 @@
             figures.Add('D', new List<List<int>> { new List<int>() { 1, 0 }, new List<int>() { 1, 1 }, new List<int>() { 1, 0 } });
             figures.Add('E', new List<List<int>> { new List<int>() { 0, 1, 0 }, new List<int>() { 1, 1, 1 } });
 
+            long startTimestamp = DateTime.UtcNow.Ticks;
             var matrix = GenerateMatrix(4, 4, new List<char> { 'D', 'B', 'A', 'C' });
+            long endTimestamp = DateTime.UtcNow.Ticks;
             //var matrix = tetris.GenerateMatrix(3, 5, new List<char> { 'A', 'D', 'E' });
             for (int i = 0; i < matrix.Count; i++)
             {
@@ -22,6 +24,8 @@
                 }
                 Console.WriteLine();
             }
+
+            Console.WriteLine($"Time taken: {new DateTime(endTimestamp - startTimestamp).TimeOfDay}");
         }
 
         private bool FitFigureInMatrix(List<List<int>> matrix, char figure, int value)
